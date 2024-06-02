@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="heading">
+        <h1>CALCULATOR</h1>
+    </div>
+    <div class="container">
+        <div class="value">
+            <input type="text" class="cal" placeholder="0">
+        </div>
+        <div class="val">
+            <div><button class="button" id="1">x<sup>y</sup></button></div>
+            <div><button class="button" id="2">lg</button></div>
+            <div><button class="button" id="3">ln</button></div>
+            <div><button class="button" id="4">(</button></div>
+            <div><button class="button" id="5">)</button></div>
+        </div>
+        <div class="val">
+            <div><button class="button" id="6">√x</button></div>
+            <div><button class="button" id="7">AC</button></div>
+            <div><button class="button" id="8" style="font-size: 30px;">×</button></div>
+            <div><button class="button" id="9">%</button></div>
+            <div><button class="button" id="10">/</button></div>
+        </div>
+        <div class="val">
+            <div><button class="button" id="11">x!</button></div>
+            <div><button class="button" id="12">7</button></div>
+            <div><button class="button" id="13">8</button></div>
+            <div><button class="button" id="14">9</button></div>
+            <div><button class="button" id="15" style="font-size: 30px;">*</button></div>
+        </div>
+        <div class="val">
+            <div><button class="button" id="16">1/x</button></div>
+            <div><button class="button" id="17">4</button></div>
+            <div><button class="button" id="18">5</button></div>
+            <div><button class="button" id="19">6</button></div>
+            <div><button class="button" id="20" style="font-size: 30px;">-</button></div>
+        </div>
+        <div class="val">
+            <div><button class="button" id="21">π</button></div>
+            <div><button class="button" id="22">1</button></div>
+            <div><button class="button" id="23">2</button></div>
+            <div><button class="button" id="24">3</button></div>
+            <div><button class="button" id="25">+</button></div>
+        </div>
+        <div class="val">
+            <div><button class="button" id="26">sin</button></div>
+            <div><button class="button" id="27">e</button></div>
+            <div><button class="button" id="28">0</button></div>
+            <div><button class="button" id="29" style="font-size: 30px;">.</button></div>
+            <div><button class="button" id="30">=</button></div>
+        </div>
+        <div class="val">
+            <div><button class="button" id="31">cos</button></div>
+            <div><button class="button" id="32">asin</button></div>
+            <div><button class="button" id="33">acos</button></div>
+            <div><button class="button" id="34">deg</button></div>
+            <div><button class="button" id="35">rad</button></div>
+        </div>
+    </div>
+    <script>
+        let str = "";
+        let btn = document.querySelectorAll(".button");
+        Array.from(btn).forEach((button) => {
+            button.addEventListener('click', (e) => {
+                if(e.target.id == 1){
+                    str = eval(str);
+                    str = str+"**";
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 2){
+                    let x = +eval(str);
+                    str = Math.log10(x).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 3){
+                    let x = +eval(str);
+                    str = Math.log10(x).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 6){
+                    let x = +eval(str);
+                    str = Math.sqrt(x).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if (e.target.id == 7) {
+                    str = "";
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 8){
+                    str = str.slice(0,str.length-1);
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 11){
+                    let n = +str;
+                    str = fact(n).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 16){
+                    let x = +eval(str);
+                    str = (1/x).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                } 
+                else if(e.target.id == 21){
+                    str = str + Math.PI.toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 26){
+                    str = Math.sin(+str).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 27){
+                    str = str + "2.71828182846";
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 30){
+                    str = eval(str);
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 31){
+                    str = Math.cos(+str).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 32){
+                    str = Math.asin(+str).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 33){
+                    str = Math.acos(+str).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 34){
+                    let x = +eval(str);
+                    str = ((180 * x) / Math.PI ).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else if(e.target.id == 35){
+                    let x = +eval(str);
+                    str = ((Math.PI * x) / 180).toString();
+                    document.querySelector("input").value = str;
+                    return;
+                }
+                else{
+                    str += e.target.innerHTML;
+                    document.querySelector("input").value = str;
+                }  
+            })
+        })
+        function fact(n){
+            if(n==0 || n==1){
+                return 1;
+            }
+            let fact = 1;
+            while(n != 1){
+                fact = fact *n;
+                n--;
+            }
+            return fact;
+        }
+    </script>
+</body>
+
+</html>
